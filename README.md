@@ -2,7 +2,7 @@
 Experimental YouTube video URL generation program, written in Python. Very ineffective unless someone handles reverse engineering the IDs somehow
 
 # Why is vididgen ineffective?
-Simple, the address space of a YouTube video's ID can include any of 73,786,976,294,838,206,464 videos, and obviously, there are not 73,786,976,294,838,206,464 videos. Trying to reverse engineer video IDs led me nowhere; I thought there was perhaps some sort of pattern in another encoding scheme, or the data itself can be represented as a sequential number you can just convert to special Base64, but that will not work. Also, I have not integrated GPU acceleration or GPU cluster support for you to rapidly generate such URLs, you're running at a theoretical rate of 2 per second.
+Simple, the address space of a YouTube video's ID can include any of 73,786,976,294,838,206,464 videos, and obviously, there are not 73,786,976,294,838,206,464 videos. Trying to reverse engineer video IDs led me nowhere; I thought there was perhaps some sort of pattern in another encoding scheme, or the data itself can be represented as a sequential number you can just convert to special Base64, but that will not work. Also, I have not integrated GPU acceleration or GPU cluster support for you to rapidly generate such URLs, you're running at a theoretical rate of 2 per second. This is to reduce the chances of rate limiting, as it verifies the video's existence itself, thus why it requires requests.
 
 # What is vididgen for?
 
