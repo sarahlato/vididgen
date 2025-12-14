@@ -44,7 +44,7 @@ while True:
             print((URL) + "\n", file=f)
     if ("https") in (realvidid):
         print ("Rate limited!!! Ending...")
-        exit
+        exit()
     else:
         nothingburger=("i am a burger")
     print("Waiting until next try to stop rate limiting")
@@ -52,3 +52,4 @@ while True:
     time.sleep (random.randint(0,1))
     
     
+
