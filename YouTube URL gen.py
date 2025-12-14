@@ -11,8 +11,16 @@ import requests
 availableSpace=("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_")
 vidID=("")
 URL=("")
+with open ("invalid_YouTube_Video_IDs.txt", "a") as f:
+            print("Started script again...", file=f)
 while True:
     vidID=(random.choice(availableSpace) + random.choice(availableSpace) + random.choice(availableSpace) + random.choice(availableSpace) + random.choice(availableSpace) + random.choice(availableSpace) + random.choice(availableSpace) + random.choice(availableSpace) + random.choice(availableSpace) + random.choice(availableSpace) + random.choice(availableSpace))
+    with open("invalid_YouTube_Video_IDs.txt", 'r') as file:
+            for line in file:
+                if (vidID) in line:
+                    vidID=(random.choice(availableSpace) + random.choice(availableSpace) + random.choice(availableSpace) + random.choice(availableSpace) + random.choice(availableSpace) + random.choice(availableSpace) + random.choice(availableSpace) + random.choice(availableSpace) + random.choice(availableSpace) + random.choice(availableSpace) + random.choice(availableSpace))
+                else:
+                    nothingburger=("i am a burger")
     URL=("https://www.youtube.com/watch?v=" + (vidID))
     #known good, COMMENT OUT after test
     #URL=("https://www.youtube.com/watch?v=t-1x5bV8d7I")
@@ -28,6 +36,8 @@ while True:
     isvalid=" - YouTube"
     if (isvalid) not in (realvidid):
         print ("Hit an invalid video ID, retrying...")
+        with open ("invalid_YouTube_Video_IDs.txt", "a") as f:
+            print((URL) + "\n", file=f)
     else:
         print(URL)
         with open ("valid_YouTube_Video_IDs.txt", "a") as f:
