@@ -7,18 +7,19 @@ import requests
 #req so far - bs4, requests
 #time and rand are in python alr
 
-
+#update - slightly increase chances of getting valid YouTube Video ID
 availableSpace=("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_")
+availableSpacelc=("AEIMQUYcgkosw048")
 vidID=("")
 URL=("")
 with open ("invalid_YouTube_Video_IDs.txt", "a") as f:
             print("Started script again...", file=f)
 while True:
-    vidID=(random.choice(availableSpace) + random.choice(availableSpace) + random.choice(availableSpace) + random.choice(availableSpace) + random.choice(availableSpace) + random.choice(availableSpace) + random.choice(availableSpace) + random.choice(availableSpace) + random.choice(availableSpace) + random.choice(availableSpace) + random.choice(availableSpace))
+    vidID=(random.choice(availableSpace) + random.choice(availableSpace) + random.choice(availableSpace) + random.choice(availableSpace) + random.choice(availableSpace) + random.choice(availableSpace) + random.choice(availableSpace) + random.choice(availableSpace) + random.choice(availableSpace) + random.choice(availableSpace) + random.choice(availableSpacelc))
     with open("invalid_YouTube_Video_IDs.txt", 'r') as file:
             for line in file:
                 if (vidID) in line:
-                    vidID=(random.choice(availableSpace) + random.choice(availableSpace) + random.choice(availableSpace) + random.choice(availableSpace) + random.choice(availableSpace) + random.choice(availableSpace) + random.choice(availableSpace) + random.choice(availableSpace) + random.choice(availableSpace) + random.choice(availableSpace) + random.choice(availableSpace))
+                    vidID=(random.choice(availableSpace) + random.choice(availableSpace) + random.choice(availableSpace) + random.choice(availableSpace) + random.choice(availableSpace) + random.choice(availableSpace) + random.choice(availableSpace) + random.choice(availableSpace) + random.choice(availableSpace) + random.choice(availableSpace) + random.choice(availableSpacelc))
                 else:
                     nothingburger=("i am a burger")
     URL=("https://www.youtube.com/watch?v=" + (vidID))
@@ -37,7 +38,7 @@ while True:
     if (isvalid) not in (realvidid):
         print ("Hit an invalid video ID, retrying...")
         with open ("invalid_YouTube_Video_IDs.txt", "a") as f:
-            print((URL) + "\n", file=f)
+            print((vidID) + "\n", file=f) #optimize size of blacklist by only using ID instead of full URL, memory management is being worked on
     else:
         print(URL)
         with open ("valid_YouTube_Video_IDs.txt", "a") as f:
@@ -49,7 +50,4 @@ while True:
         nothingburger=("i am a burger")
     print("Waiting until next try to stop rate limiting")
     #try to not get blocked or something like that with heuristics
-    time.sleep (random.randint(0,1))
     
-    
-
